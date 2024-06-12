@@ -202,10 +202,10 @@ nav{
                                                     {% for item in data %}
                                                     <tr> 
                                                         <td scope="row"> 
-                                                        <span class="fa fa-briefcase mr-1"></span> {{item[1]}} </td> 
-                                                        <td><span class="fa fa-cc-mastercard">{{item[4]}}</span></td>
-                                                         <td class="text-muted">{{item[3]}}</td> <td class="d-flex justify-content-end align-items-center"> 
-                                                            <span class="fa fa-long-arrow-up mr-1"></span> ${{item[2]}} </td> 
+                                                        <span class="fa fa-briefcase mr-1"></span> {{item.package}} </td> 
+                                                        <td><span class="fa fa-cc-mastercard">{{item.pay_type}}</span></td>
+                                                         <td class="text-muted">{{item.date}}</td> <td class="d-flex justify-content-end align-items-center"> 
+                                                            <span class="fa fa-long-arrow-up mr-1"></span> ${{item.amount}} </td> 
                                                         </tr> 
                                                     {% endfor %}
                                                                          </tbody> </table> </div> <div class="d-flex justify-content-between align-items-center results"> <span class="pl-md-3">Showing<b class="text-white"> 1-7 0f 200 </b> trasactions</span>
