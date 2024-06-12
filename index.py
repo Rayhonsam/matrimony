@@ -173,19 +173,18 @@ def preference_page():
             'religion': religion
         })
 
-        # Query users matching the preference
         users_ref = db.collection('login')
-        query = users_ref.where('id', '!=', user_id).where(
-            firestore.OR(firestore.FieldPath('age'), '==', age, firestore.FieldPath('caste'), '==', caste, firestore.FieldPath('religion'), '==', religion)
-        ).stream()
-
-        data = [doc.to_dict() for doc in query]
+        query = users_ref.where('age', '==', age).where('caste', '==', caste).stream()
+        data=[]
+        for doc in query:
+            print(doc.to_dict())
+            data.append(doc.to_dict())
         
         return render_template("mat_preference.html", data=data, name=session['username'], mail=session['mail'])
     elif 'loggedin' in session:
         return render_template("mat_preference.html", name=session['username'], mail=session['mail'])
-    else:
-        return render_template("mat_login.html")
+    return render_template("mat_login.html")
+
 @app.route("/update_profile", methods=['GET', 'POST'])
 def update_profile_page():
     if request.method == "POST" and 'loggedin' in session:
